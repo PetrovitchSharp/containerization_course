@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "mychart.fullname" . | quote }}
+  labels:
+    {{- include "mychart.labels" . | nindent 4 }}
+data:
+  NEXTCLOUD_UPDATE: {{ .Values.appConfig.nextcloud.update | quote }}
+  ALLOW_EMPTY_PASSWORD: {{ .Values.appConfig.nextcloud.emptyPassword | quote }}
+  NEXTCLOUD_TRUSTED_DOMAINS: {{ .Values.appConfig.nextcloud.trustedDomains | quote }}
+  POSTGRES_HOST: {{ .Values.appConfig.postgres.host | quote }}
+  POSTGRES_DB: {{ .Values.appConfig.postgres.db | quote }}
